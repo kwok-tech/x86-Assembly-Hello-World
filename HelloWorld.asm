@@ -8,7 +8,7 @@ global _start
 
 section .text:
 _start:
-    ; unistd_32.h: #define __NR_write    4       
+    ; unistd_32.h: #define __NR_write                  4  
     mov eax, 0x4 ; Use write syscall
 
     ; unistd.h: ssize_t write(int fd, const void *buf, size_t count)
@@ -16,7 +16,10 @@ _start:
     mov ebx, 1              ; stdout as fd
     mov ecx, output         ; output as buf
     mov edx, outputLength   ; outputLength as count
+    ; unistd_32.h: #define __NR_getgroups                 80
     int 0x80                ; invoke/run syscall: int-interupt, 0x80 identifer for running syscall
+    
+    ; unistd_32.h: #define __NR_exit                  1
     mov eax, 0x1            ; exit syscall
     mov ebx, 0              ; return 0 on success
     int 0x80                ; invoke syscall
