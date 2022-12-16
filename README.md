@@ -13,7 +13,7 @@ Create obj file using this asm with nasm
 ```
 nasm -f elf32 -o HelloWorld.o HelloWorld.asm
 ```
-Create executable file using object file
+link executable file using object file
 ```
 ld -m elf_i386 -o  HelloWorld HelloWorld.o
 ```
